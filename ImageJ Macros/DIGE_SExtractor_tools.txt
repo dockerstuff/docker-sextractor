@@ -1,0 +1,108 @@
+// DIGE tools
+//
+
+macro "Save Inverted FITS" {
+	run("Flip Vertically");
+	run("FITS...", "");
+	run("Flip Vertically");
+}
+macro "Cy5 Action Tool - C000C111C222C333C444D83C444D6dC444D8cC444D9bC444D56C444D5dC444D87Da9C444D44C444D6cC444D76C444D43D46D54D98C555D9aC555D47D67C555D45D4cD77D88D93C555D53D66C555D7dDaaC555D5cC555Da8C555D48C555D63D73D8dD97DabC555D57C555C666D9cC666D4dD7cC666D3cC666D99C666D86C666Da3C666C777D8bC888D55C888D64D74C888C999Da4C999D58C999DacC999D3dD84C999D94C999CaaaD37CaaaD35D62CaaaD33CaaaD72CaaaDa7CaaaD42CaaaD4bCaaaD34D36CbbbD8aD96CbbbDa2CbbbD9dCbbbD52CbbbD92CbbbD82CbbbD3bCbbbCcccD89CcccD78CcccCdddD7bCdddD32CdddD38CdddD5bD68CdddDb9CdddCeeeD6bCeeeD7eCeeeDa5DbbCeeeDb7CeeeDb8DbcCeeeD1bD1eCfffD49D4eDd6CfffD12D25CfffD1aD29D2cD65DadCfffD31D81CfffD4aD5eD8eD9fCfffD85DdaDffCfffD06D0fD41Dd3CfffD00D20Db2Db3DbeDc6Df5Df9CfffD04D28D60Da6Dc9DecCfffD08D0dD13D39D5fD7aD90DbaDc5Dd9De3CfffD0cD17Dc0Dc1DedCfffD61D7fDb0DceDe6DfeCfffD11D6aD6fDc2Df0CfffD23D27D50D91Db4DcfDe7Df4DfbCfffD3eD3fD9eDddDe8De9Df2CfffD01D02D03D05D07D09D0aD0bD0eD10D14D15D16D18D19D1cD1dD1fD21D22D24D26D2aD2bD2dD2eD2fD30D3aD40D4fD51D59D5aD69D6eD70D71D75D79D80D8fD95Da0Da1DaeDafDb1Db5Db6DbdDbfDc3Dc4Dc7Dc8DcaDcbDccDcdDd0Dd1Dd2Dd4Dd5Dd7Dd8DdbDdcDdeDdfDe0De1De2De4De5DeaDebDeeDefDf1Df3Df6Df7Df8DfaDfcDfd" {
+     run("Red");
+     run("RGB Color");
+     run("Paste Control...");
+     setPasteMode("Add");
+     setPasteMode("Add");
+     run("Copy");
+     }
+
+  macro "Cy3 & Save Action Tool - CfffD4eD55Da2Db6DbcCfffD2bD56CfffD79Db8CfffD2cDb4Db5CfffD45CfffCeeeD58DadCeeeD8eCeeeDa7CeeeDbbCeeeD57Db9DbaCeeeD5eCeeeD6bCeeeCdddD6eD7eCdddD7bCdddD42CdddD33CdddCcccD66CcccD34CcccD3dCcccCbbbD92CbbbCaaaD74CaaaD64CaaaC999D8aC999Da3C999C888D5bD76C888C777D3bC777D89C777D52D9dC777Da6C666C555DacC555Da8C555D85C555C444D68C444D82C444Da5C444Da4C444D3cC333D62D8bC333C222D54D72C222C111DabC111D4dDa9DaaC111C000D4bD67D84C000D43D44D4cD53D5cD5dD63D6cD6dD73D77D78D7cD7dD83D86D87D88D8cD8dD93D94D95D96D97D98D99D9aD9bD9c" {
+     run("Green");
+     run("RGB Color");
+     run("Paste");
+     saveAs("Jpeg");
+     }
+
+  macro "Make Stack & Save Action Tool - CfffCeeeCdddCcccCbbbCaaaC999C888C777C666C555D00D01D02D03D04D05D06D07D08D10D18D20D28D30D38D40D48D50D54D55D56D57D58D59D5aD5bD5cD5dD5eD5fD60D64D68D6fD70D74D78D7fD80D84D88D8fD90D91D92D93D94D95D96D97D98D9fDa4DafDb4DbfDc4DcfDd4DdfDe4DefDf4Df5Df6Df7Df8Df9DfaDfbDfcDfdDfeDff" {
+     run("Images to Stack", "name=Stack title=[] use");
+     saveAs("Animated Gif... ");
+     }
+
+
+  macro "Import XY... Action Tool - CdddD10D11D12D13D14D15D16D17D18D19D1aD1bD1cD1dD1eD1fD20D21D22D23D25D26D27D28D29D2aD2bD2cD2dD2eD2fD30D31D32D33D35D36D37D38D39D3aD3bD3cD3eD3fD40D41D47D48D49D4aD4bD4cD4eD4fD50D51D52D53D55D56D57D58D59D5aD60D61D62D63D65D66D67D68D69D6aD6bD6cD6eD6fD70D71D72D73D74D75D76D77D78D79D7aD7bD7cD7eD7fD80D81D82D83D84D85D86D87D88D89D8aD8bD8cD8dD8eD8fD90D91D92D93D94D95D96D97D98D99D9aD9bD9cD9dD9eD9fDa0Da1Da3Da4Da5Da6Da7Da8Da9DaaDabDacDadDaeDafDb0Db1Db3Db4Db5Db6Db7Db8Db9DbaDbbDbdDbeDbfDc5Dc6Dc7Dc8Dc9DcaDcbDcdDceDcfDd0Dd1Dd3Dd4Dd5Dd6Dd7Dd8Dd9DdfDe0De1De3De4De5De6De7De8De9DeaDebDedDeeDefDf0Df1Df2Df3Df4Df5Df6Df7Df8Df9DfaDfbDfdDfeDffC012D24D34D3dD42D43D45D46D4dD54D5bD5cD5eD5fD64D6dD7dDa2Db2DbcDc0Dc1Dc3Dc4DccDd2DdaDdbDddDdeDe2DecDfcC0f0D44D5dDc2Ddc" {
+	// ask for a file to be imported
+	fileName = File.openDialog("Select the file to import");
+	allText = File.openAsString(fileName);
+	tmp = split(fileName,".");
+	// get file format {txt, csv}
+	posix = tmp[lengthOf(tmp)-1];
+	// parse text by lines
+	text = split(allText, "\n");
+
+	// define array for points
+	var xpoints = newArray;
+	var ypoints = newArray;
+
+	// in case input is in TXT format
+	if (posix=="txt") {
+		print("importing TXT point set...");
+		//these are the column indexes
+		hdr = split(text[0]);
+		nbPoints = split(text[1]);
+		iX = 0; iY = 1;
+	// loading and parsing each line
+	for (i = 2; i < (text.length); i++){
+	   line = split(text[i]," ");
+	   setOption("ExpandableArrays", true);
+	   xpoints[i-2] = parseInt(line[iX]);
+	   ypoints[i-2] = parseInt(line[iY]);
+	   print("p("+i-1+") ["+xpoints[i-2]+"; "+ypoints[i-2]+"]");
+		}
+	// in case input is in CSV format
+	} else if (posix=="csv") {
+		print("importing CSV point set...");
+	//these are the column indexes
+	hdr = split(text[0]);
+	iLabel = 0; iX = 1; iY = 2;
+	// loading and parsing each line
+	for (i = 1; i < (text.length); i++){
+	   line = split(text[i],",");
+	   setOption("ExpandableArrays", true);
+	   xpoints[i-1] = parseInt(line[iX]);
+	//Inverts the Y coordinate by subtracting from 1023
+	   ypoints[i-1] = parseInt(1023-line[iY]);
+	   print("p("+i+") ["+xpoints[i-1]+"; "+ypoints[i-1]+"]");
+		}
+	// in case of any other format
+	} else {
+	print("not supported format...");
+	}
+
+	// show the points in the image
+	makeSelection("point", xpoints, ypoints);
+	}
+
+macro "Export XY... Action Tool - CdddD10D11D12D13D14D15D16D17D18D19D1aD1bD1cD1dD1eD1fD20D21D22D23D25D26D27D28D29D2aD2bD2cD2dD2eD2fD30D31D32D33D35D36D37D38D39D3aD3bD3cD3eD3fD40D41D47D48D49D4aD4bD4cD4eD4fD50D51D52D53D55D56D57D58D59D5aD60D61D62D63D65D66D67D68D69D6aD6bD6cD6eD6fD70D71D72D73D74D75D76D77D78D79D7aD7bD7cD7eD7fD80D81D82D83D84D85D86D87D88D89D8aD8bD8cD8dD8eD8fD90D91D92D93D94D95D96D97D98D99D9aD9bD9cD9dD9eD9fDa0Da1Da3Da4Da5Da6Da7Da8Da9DaaDabDacDadDaeDafDb0Db1Db3Db4Db5Db6Db7Db8Db9DbaDbbDbdDbeDbfDc5Dc6Dc7Dc8Dc9DcaDcbDcdDceDcfDd0Dd1Dd3Dd4Dd5Dd6Dd7Dd8Dd9DdfDe0De1De3De4De5De6De7De8De9DeaDebDedDeeDefDf0Df1Df2Df3Df4Df5Df6Df7Df8Df9DfaDfbDfdDfeDffC012D24D34D3dD42D43D45D46D4dD54D5bD5cD5eD5fD64D6dD7dDa2Db2DbcDc0Dc1Dc3Dc4DccDd2DdaDdbDddDdeDe2DecDfcC0f0D44D5dDc2Ddc" {
+// clean results
+run("Clear Results");
+// get all points
+getSelectionCoordinates(xCoordinates, yCoordinates);
+
+// chose name pattern for exporting
+fileName = File.openDialog("Select the file for export");
+
+// Exporting as TXT format (ITK compatible)
+file = File.open(fileName+".txt");
+print(file, "point");
+print(file, lengthOf(xCoordinates) );
+for(i=0; i<lengthOf(xCoordinates); i++) {
+    print(file, xCoordinates[i] + " " + yCoordinates[i]);
+}
+
+// export as CSV file
+for(i=0; i<lengthOf(xCoordinates); i++) {
+    setResult("X", i, xCoordinates[i]);
+    setResult("Y", i, yCoordinates[i]);
+}
+updateResults();
+saveAs("Results", fileName+".csv");
+}
