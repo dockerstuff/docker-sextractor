@@ -1,23 +1,31 @@
-# Introduction
-This project from the Minden lab is a way to help you use Source Extractor to detect changes in DIGE gels.
+# TODO:
+- [x]() list syntax required (any unordered or ordered list supported)
+- [x]() this is a complete item
+- [ ]() this is an incomplete item
 
-Source Extractor is a neural-network based star/galaxy classifier that we've also found to be useful for identifying and quantifying protein spots in DIGE gels. The advantage is that it’s free and open source, so we know where the values are coming from, which provides a more accurate and transparent way to measure protein changes. You can find a 3-minute video overview of the project [here][1].
+
+# Introduction
+This project from the Minden lab is a way to help you apply Source Extractor to detect changes in DIGE gels.
+
+[Source Extractor][4] is a neural-network based star/galaxy classifier that we've also found to be useful for identifying and quantifying protein spots in DIGE gels. The advantage is that it’s free and open source, so we know where the values are coming from, which provides a more accurate and transparent way to measure protein changes. Here’s a [3-minute video overview of the project][5].
+
+You can check out the on-line [documentation][6], the [official web page][7], and the [user forum][8]. 
 
 Here’s a guide to take you from TIFF files to protein changes:
 
 ## 1. Install Docker and SourceExtractor
-1. Docker is a way to install and run software on many platforms, similar to a virtual machine. This makes installing Source Extractor much easier and more secure. Download it here:
-[https://www.docker.com/community-edition][2]
+1. Docker is a way to install and run software on many platforms, similar to a virtual machine. This makes installing Source Extractor much easier and more secure. [Download it here][9].
 
-2. Github is a way to host and update files. Download docker-sextractor from our github:
-[https://github.com/peptidoglycanthrope/docker-sextractor][3]
+2. Github is a way to host and update files. Download docker-sextractor [from our github][10].
 
 3. Navigate to the Github folder you downloaded, and open it in Terminal.
-Hopefully we'll make this clickable and not require terminal
+> Hopefully we'll make this clickable and not require terminal
+
 Install:
-`Bash build-run.sh
-`
+\`Bash build-run.sh
+
 4. Optional: Install some useful DIGE and SExtractor macros:
+
 Copy `DIGE_SExtractor_tools.txt` to ImageJ/macros/toolsets
 
 ## 2. Prepare files
@@ -25,29 +33,27 @@ Copy `DIGE_SExtractor_tools.txt` to ImageJ/macros/toolsets
 - Make a merged sum: paste control → add, copy and paste one window on to the other. Save the result as a FITS file in the folder `fitsSum` 
 - Make sure all files have the same name
 
-Run: 
-`docker run dige-sextractor`
+- Run `docker run dige-sextractor`
 
-In ??? you should find:
-**Aper files** are masks that you can open in ImageJ to check that there's a reasonable size. Dotted lines mean less confidence.
+Afterwards you should find:
+- **Aper files** are masks that you can open in ImageJ to check that there's a reasonable size. Dotted lines mean less confidence.
 
-The **cat folder** is where you get raw intensity values. You can open in excel and make the columns index, x, y, raw intensity. 
+- The **cat folder** is where you get raw intensity values. You can open in excel and make the columns index, x, y, raw intensity. 
 
-What are the other columns produced in cat files? What is the thershold of confidence for dotted circles? are the coordinates a centroid?
+- [ ]() What are the other columns produced in cat files? What is the thershold of confidence for dotted circles? are the coordinates a centroid?
 
 Note: Sometimes the y coordinate will be inverted. In that case, in imageJ, analyse / set measurements / invert y coordinate
 
 ## 3. Tune segmentation parameters
 
-Coming soon to a readme near you!
+- [ ]() Coming soon to a readme near you!
 
 This section should include:
-	Key parameters
-	Intuition on what they mean
-	How to adjust them
-	Recommended range
-	Possibly example images
-
+- [ ]()  Key parameters
+- [ ]() Intuition on what they mean
+- [ ]() How to adjust them
+- [ ]() Recommended range
+- [ ]() Possible example images
 
 `ANALYSIS_THRESH 1.7`
 Threshold to start running analysis, measured in in number of sigmas over background RMS. 
@@ -70,7 +76,7 @@ Minimum contrast parameter for deblending
 
 `BACK_SIZE	16`
 Size of the background mesh: \<size\> or \<width\>,\<height\> 
-The default is 32, but I recommend 8-16
+The default is 32, but I recommend 8-16.
 
 If this is too small, the background estimation gets distracted by objects and noise, and the signal gets absorbed into noise. 
 If this is too big, you miss the small-scale variation in background. 
@@ -81,18 +87,16 @@ If this is too big, you miss the small-scale variation in background.
 Background filter: \<size\> or \<width\>,\<height\>
 
 `BACK_TYPE MANUAL `
-still trying this out
+- [ ]() still trying this out
 
 `BACK_VALUE 300` 
-still trying this out
+- [ ]() still trying this out
 
-
-
- What's ASSOC?
+- [ ]() What's ASSOC?
 
 ## 4. Decide on guidestars
 
-TODO: How do you look at raw values in excel?
+- [ ]() How do you look at raw values in excel?
 
 SExtractor will output a .cat file
 rename your .cat file .csv
@@ -110,7 +114,7 @@ If you want to only load some points, you might want to copy and paste only thos
 
 - Across at least 3 biological replicates, look at all the raw values. Find 5-6 spots that are evenly distributed through the gel and don't change more than 6% between Cy5 and Cy3
 
-- Take a ratio of Cy5 to Cy3 for each guide star, take an average, and multiply the raw values by that correction factor. 
+- Take a ratio of Cy5 to Cy3 for each guide star, take an average, and multiply the raw values by that correction factor.
 
 Consider making the ratio less than 1 to prevent stack overflow. A good correction factor is within 30%.
 
@@ -128,20 +132,28 @@ Rejoice! You’ve identified and quantified protein changes in DIGE gels!
 
 ## PS: Troubleshooting importing XY coordinates into ImageJ
 It's possible to import points from a text file too, provided you put it in this format:
+	`
 	points
 	n
 	x1 y1
 	x2 y2
 	...
 	xn yn
+	```
 Where n is the total number of points you have.
 
 For troubleshooting purposes, make some dummy points and use the Export XY macro to see the format it expects. You can then copy your data over that file.
 
 Note that the Import XY macro inverts the Y coordinate in line 41:
+
 `ypoints[i-1] = parseInt(1023-line[iY]);`
+
 If you want to keep the Y coordinates as they are, just delete the "1023-" part.
 
-[1]:	https://www.youtube.com/watch?v=ZZwJOo-vCFU
-[2]:	https://www.docker.com/community-edition
-[3]:	https://github.com/peptidoglycanthrope/docker-sextractor
+[4]:	http://astromatic.net/software/sextractor
+[5]:	https://www.youtube.com/watch?v=ZZwJOo-vCFU
+[6]:	http://sextractor.readthedocs.org
+[7]:	http://astromatic.net/software/sextractor
+[8]:	http://astromatic.net/forum/forumdisplay.php?fid=4
+[9]:	[https://www.docker.com/community-edition]
+[10]:	[https://github.com/peptidoglycanthrope/docker-sextractor]
