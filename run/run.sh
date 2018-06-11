@@ -14,8 +14,8 @@ echo "ready"
 #
 
 # Variables
-SX=/usr/local/bin/sex;
-BASE_DIR=$HOME/Documents/GitHub/sextractor/run
+SX=/usr/bin/sex;
+BASE_DIR=.
 SX_CONFIG=${BASE_DIR}/DIGE.sex
 SX_PARAM=${BASE_DIR}/DIGE.param
 FITS_3_DIR=${BASE_DIR}/input_fits_3

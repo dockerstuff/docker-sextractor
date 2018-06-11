@@ -5,10 +5,10 @@ VOLUME /work
 
 ENV SEX_PKG sextractor-2.19.5-1.x86_64.rpm
 
-#add files in run to working directory
+#add files in run and setup to working directory
 ADD ./run .
+ADD ./setup .
 
-RUN curl -q -O http://www.astromatic.net/download/sextractor/$SEX_PKG && \
-    rpm --install --quiet $SEX_PKG
+RUN rpm --install --quiet $SEX_PKG
 
-CMD bash /work/hello.sh
+CMD bash /work/run.sh
