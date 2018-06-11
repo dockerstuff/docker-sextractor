@@ -1,28 +1,23 @@
-# TODO:
-- [x]() list syntax required (any unordered or ordered list supported)
-- [x]() this is a complete item
-- [ ]() this is an incomplete item
-
-
 # Introduction
 This project from the Minden lab is a way to help you apply Source Extractor to detect changes in DIGE gels.
 
-[Source Extractor][4] is a neural-network based star/galaxy classifier that we've also found to be useful for identifying and quantifying protein spots in DIGE gels. The advantage is that it’s free and open source, so we know where the values are coming from, which provides a more accurate and transparent way to measure protein changes. Here’s a [3-minute video overview of the project][5].
+[Source Extractor][1] is a neural-network based star/galaxy classifier that we've also found to be useful for identifying and quantifying protein spots in DIGE gels. The advantage is that it’s free and open source, so we know where the values are coming from, which provides a more accurate and transparent way to measure protein changes. Here’s a [3-minute video overview of the project][2].
 
-You can check out the on-line [documentation][6], the [official web page][7], and the [user forum][8]. 
+You can check out the on-line [documentation][3], the [official web page][4], and the [user forum][5]. 
 
 Here’s a guide to take you from TIFF files to protein changes:
 
 ## 1. Install Docker and SourceExtractor
-1. Docker is a way to install and run software on many platforms, similar to a virtual machine. This makes installing Source Extractor much easier and more secure. [Download it here][9].
+1. Docker is a way to install and run software on many platforms, similar to a virtual machine. This makes installing Source Extractor much easier and more secure. [Download it here][6].
 
-2. Github is a way to host and update files. Download docker-sextractor [from our github][10].
+2. Github is a way to host and update files. Download docker-sextractor [from our github][7].
 
 3. Navigate to the Github folder you downloaded, and open it in Terminal.
 > Hopefully we'll make this clickable and not require terminal
 
 Install:
-\`Bash build-run.sh
+
+`Bash build-run.sh`
 
 4. Optional: Install some useful DIGE and SExtractor macros:
 
@@ -40,20 +35,18 @@ Afterwards you should find:
 
 - The **cat folder** is where you get raw intensity values. You can open in excel and make the columns index, x, y, raw intensity. 
 
-- [ ]() What are the other columns produced in cat files? What is the thershold of confidence for dotted circles? are the coordinates a centroid?
-
-Note: Sometimes the y coordinate will be inverted. In that case, in imageJ, analyse / set measurements / invert y coordinate
+If the y-coordinate is inverted, in ImageJ check analyze / set measurements / invert y coordinate
 
 ## 3. Tune segmentation parameters
 
-- [ ]() Coming soon to a readme near you!
+> Coming soon to a readme near you!
 
-This section should include:
-- [ ]()  Key parameters
-- [ ]() Intuition on what they mean
-- [ ]() How to adjust them
-- [ ]() Recommended range
-- [ ]() Possible example images
+> This section should include:
+> Key parameters
+> Intuition on what they mean
+> How to adjust them
+> Recommended range
+> Possible example images
 
 `ANALYSIS_THRESH 1.7`
 Threshold to start running analysis, measured in in number of sigmas over background RMS. 
@@ -87,16 +80,16 @@ If this is too big, you miss the small-scale variation in background.
 Background filter: \<size\> or \<width\>,\<height\>
 
 `BACK_TYPE MANUAL `
-- [ ]() still trying this out
+> still trying this out
 
 `BACK_VALUE 300` 
-- [ ]() still trying this out
+> still trying this out
 
-- [ ]() What's ASSOC?
+> What's ASSOC?
 
 ## 4. Decide on guidestars
 
-- [ ]() How do you look at raw values in excel?
+> How do you look at raw values in excel?
 
 SExtractor will output a .cat file
 rename your .cat file .csv
@@ -132,7 +125,7 @@ Rejoice! You’ve identified and quantified protein changes in DIGE gels!
 
 ## PS: Troubleshooting importing XY coordinates into ImageJ
 It's possible to import points from a text file too, provided you put it in this format:
-	`
+	```
 	points
 	n
 	x1 y1
@@ -148,12 +141,12 @@ Note that the Import XY macro inverts the Y coordinate in line 41:
 
 `ypoints[i-1] = parseInt(1023-line[iY]);`
 
-If you want to keep the Y coordinates as they are, just delete the "1023-" part.
+If you want to keep the Y coordinates as they are, just delete the `1023-` part.
 
+[1]:	http://astromatic.net/software/sextractor
+[2]:	https://www.youtube.com/watch?v=ZZwJOo-vCFU
+[3]:	http://sextractor.readthedocs.org
 [4]:	http://astromatic.net/software/sextractor
-[5]:	https://www.youtube.com/watch?v=ZZwJOo-vCFU
-[6]:	http://sextractor.readthedocs.org
-[7]:	http://astromatic.net/software/sextractor
-[8]:	http://astromatic.net/forum/forumdisplay.php?fid=4
-[9]:	[https://www.docker.com/community-edition]
-[10]:	[https://github.com/peptidoglycanthrope/docker-sextractor]
+[5]:	http://astromatic.net/forum/forumdisplay.php?fid=4
+[6]:	[https://www.docker.com/community-edition]
+[7]:	[https://github.com/peptidoglycanthrope/docker-sextractor]
