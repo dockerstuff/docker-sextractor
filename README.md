@@ -3,7 +3,7 @@ This project from the Minden lab is a way to help you apply Source Extractor to 
 
 [Source Extractor][1] is a neural-network based star/galaxy classifier that we've also found to be useful for identifying and quantifying protein spots in DIGE gels. The advantage is that it’s free and open source, so we know where the values are coming from, which provides a more accurate and transparent way to measure protein changes. Here’s a [3-minute video overview of the project][2].
 
-You can check out the on-line [documentation][3], the [official web page][4], and the [user forum][5]. 
+You can check out the on-line [documentation][3], the [official web page][4], and the [user forum][5].
 
 Here’s a guide to take you from TIFF files to protein changes:
 
@@ -13,7 +13,7 @@ Here’s a guide to take you from TIFF files to protein changes:
 2. Github is a way to host and update files. Download docker-sextractor [from our github][7].
 
 3. Navigate to the Github folder you downloaded, and open it in Terminal.
-> Hopefully we'll make this clickable and not require terminal
+- [ ]  Hopefully we'll make this clickable and not require terminal
 
 Install:
 
@@ -25,7 +25,7 @@ Copy `DIGE_SExtractor_tools.txt` to ImageJ/macros/toolsets
 
 ## 2. Prepare files
 - In ImageJ, save the Cy3 and Cy5 TIFF images as FITS files in the folders `input_fits_3` and `input_fits_5`
-- Make a merged sum: paste control → add, copy and paste one window on to the other. Save the result as a FITS file in the folder `fitsSum` 
+- Make a merged sum: paste control → add, copy and paste one window on to the other. Save the result as a FITS file in the folder `fitsSum`
 - Make sure all files have the same name
 
 - Run `docker run dige-sextractor`
@@ -33,7 +33,7 @@ Copy `DIGE_SExtractor_tools.txt` to ImageJ/macros/toolsets
 Afterwards you should find:
 - **Aper files** are masks that you can open in ImageJ to check that there's a reasonable size. Dotted lines mean less confidence.
 
-- The **cat folder** is where you get raw intensity values. You can open in excel and make the columns index, x, y, raw intensity. 
+- The **cat folder** is where you get raw intensity values. You can open in excel and make the columns index, x, y, raw intensity.
 
 If the y-coordinate is inverted, in ImageJ check analyze / set measurements / invert y coordinate
 
@@ -42,37 +42,37 @@ If the y-coordinate is inverted, in ImageJ check analyze / set measurements / in
 > Coming soon to a readme near you!
 
 > This section should include:
-> Key parameters
-> Intuition on what they mean
-> How to adjust them
-> Recommended range
+> Key parameters,
+> Intuition on what they mean,
+> How to adjust them,
+> Recommended range,
 > Possible example images
 
 `ANALYSIS_THRESH 1.7`
-Threshold to start running analysis, measured in in number of sigmas over background RMS. 
+Threshold to start running analysis, measured in in number of sigmas over background RMS.
 
 `DETECT_MINAREA 10`		
 minimum number of pixels above threshold
 
-`DETECT_MAXAREA` 
+`DETECT_MAXAREA`
 Can be used to avoid objects larger than a set number of pixels, for example, _Drosophila_ yolk.
 
 `DETECT_THRESH	1.7`
 \<sigmas\> or \<threshold\>,\<ZP\> in mag.arcsec-2
 
-`DEBLEND_NTHRESH	64`	
+`DEBLEND_NTHRESH	64`
 Number of deblending sub-thresholds
 
 `DEBLEND_MINCONT	0.00001`
-Minimum contrast parameter for deblending 
+Minimum contrast parameter for deblending
 0 picks up the faintest objects/ 1 turns deblending off. For faint images, we recommend 0, otherwise turn up to 0.0001
 
 `BACK_SIZE	16`
-Size of the background mesh: \<size\> or \<width\>,\<height\> 
+Size of the background mesh: \<size\> or \<width\>,\<height\>
 The default is 32, but I recommend 8-16.
 
-If this is too small, the background estimation gets distracted by objects and noise, and the signal gets absorbed into noise. 
-If this is too big, you miss the small-scale variation in background. 
+If this is too small, the background estimation gets distracted by objects and noise, and the signal gets absorbed into noise.
+If this is too big, you miss the small-scale variation in background.
 
 32-256 is normal for stars. I thought DIGE would have much less background variation, meaning bigger is better, but 16 seems to be a good compromise based on fly data. 8 is also reasonable, and will give smaller ROIs.
 
@@ -82,7 +82,7 @@ Background filter: \<size\> or \<width\>,\<height\>
 `BACK_TYPE MANUAL `
 > still trying this out
 
-`BACK_VALUE 300` 
+`BACK_VALUE 300`
 > still trying this out
 
 > What's ASSOC?
@@ -92,11 +92,12 @@ Background filter: \<size\> or \<width\>,\<height\>
 > How do you look at raw values in excel?
 
 SExtractor will output a .cat file
-rename your .cat file .csv
-Open a new Excel document and select file / import / CSV file
-Save as CSV
+rename your .cat file .csv.
+1. Open a new Excel document and select File / Import / CSV file.
+2. Save as CSV
+>Can this be automated?
 
-You can visualize these coordinates in ImageJ/Fiji: 
+**You can visualize these coordinates in ImageJ/Fiji:**
 - Install the ImageJ macros as described in 1.4 above
 - In ImageJ, click the double red arrow on the right and load `DIGE_SExtractor_tools`
 - Click the button labeled “Import XY… Tool”
@@ -114,25 +115,25 @@ Consider making the ratio less than 1 to prevent stack overflow. A good correcti
 ## 5. Quantify changes
 - In Excel, multiply one channel by the correction factor. Now all the guide stars should be about the same between channels.
 
-- Then calculate fold ratio changes, and set a threshold
+- Then calculate fold ratio changes, and set a reasonable threshold.
 
 More than a hundred changes is probably too many.
 
 Rejoice! You’ve identified and quantified protein changes in DIGE gels!
 
 ## About the authors
+Ian and Ardon are pretty cool.
 
-
-## PS: Troubleshooting importing XY coordinates into ImageJ
+#### Troubleshooting importing XY coordinates into ImageJ
 It's possible to import points from a text file too, provided you put it in this format:
-	```
+```
 	points
 	n
 	x1 y1
 	x2 y2
 	...
 	xn yn
-	```
+```
 Where n is the total number of points you have.
 
 For troubleshooting purposes, make some dummy points and use the Export XY macro to see the format it expects. You can then copy your data over that file.
