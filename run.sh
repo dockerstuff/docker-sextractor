@@ -2,4 +2,8 @@
 
 docker run -v /tmp/output:/../work dige-sextractor
 
-mv /tmp/output/* run
+folderName=$(date "+output-%Y-%m-%d-%H-%M-%S")
+mkdir run/$folderName
+
+mv /tmp/output/* run/$folderName
+
