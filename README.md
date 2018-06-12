@@ -17,7 +17,7 @@ Here’s a guide to take you from TIFF files to protein changes:
 
 Install:
 
-`Bash build-run.sh`
+`bash build.sh`
 
 4. Optional: Install some useful DIGE and SExtractor macros:
 
@@ -28,7 +28,7 @@ Copy `DIGE_SExtractor_tools.txt` to ImageJ/macros/toolsets
 - Make a merged sum: paste control → add, copy and paste one window on to the other. Save the result as a FITS file in the folder `fitsSum`
 - Make sure all files have the same name
 
-- Run `docker run dige-sextractor`
+- Run `bash run.sh`
 
 Afterwards you should find:
 - **Aper files** are masks that you can open in ImageJ to check that there's a reasonable size. Dotted lines mean less confidence.
