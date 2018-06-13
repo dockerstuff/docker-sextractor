@@ -18,13 +18,14 @@ SX=/usr/bin/sex;
 BASE_DIR=.
 SX_CONFIG=${BASE_DIR}/DIGE.sex
 SX_PARAM=${BASE_DIR}/DIGE.param
-FITS_3_DIR=${BASE_DIR}/input_fits_3
-FITS_5_DIR=${BASE_DIR}/input_fits_5
-FITS_SUM_DIR=${BASE_DIR}/input_fits_sum
-APER_3_DIR=${BASE_DIR}/work/output_image_3
-CAT_3_DIR=${BASE_DIR}/work/output_numbers_3
-APER_5_DIR=${BASE_DIR}/work/output_image_5
-CAT_5_DIR=${BASE_DIR}/work/output_numbers_5
+FITS_3_DIR=${BASE_DIR}/work/input/input_fits_3
+FITS_5_DIR=${BASE_DIR}/work/input/input_fits_5
+FITS_SUM_DIR=${BASE_DIR}/work/input/input_fits_sum
+APER_3_DIR=${BASE_DIR}/work/output/output_image_3
+CAT_3_DIR=${BASE_DIR}/work/output/output_numbers_3
+APER_5_DIR=${BASE_DIR}/work/output/output_image_5
+CAT_5_DIR=${BASE_DIR}/work/output/output_numbers_5
+
 echo "pre sanity"
 # Sanity checking
 if [ ! -e $SX ]; then

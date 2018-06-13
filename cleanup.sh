@@ -2,3 +2,4 @@
 
 docker rm $(docker ps -a -q)
 docker rmi $(docker images -q)
+rm -r dige/o* 
