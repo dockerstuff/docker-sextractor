@@ -16,8 +16,8 @@ echo "ready"
 # Variables
 SX=/usr/bin/sex;
 BASE_DIR=.
-SX_CONFIG=${BASE_DIR}/DIGE.sex
-SX_PARAM=${BASE_DIR}/DIGE.param
+SX_CONFIG=${BASE_DIR}/work/config/DIGE.sex
+SX_PARAM=${BASE_DIR}/work/config/DIGE.param
 FITS_3_DIR=${BASE_DIR}/work/input/input_fits_3
 FITS_5_DIR=${BASE_DIR}/work/input/input_fits_5
 FITS_SUM_DIR=${BASE_DIR}/work/input/input_fits_sum

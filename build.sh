@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t dige-sextractor .
+docker build -f docker/Dockerfile -t dige-sextractor docker

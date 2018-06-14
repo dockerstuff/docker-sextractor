@@ -19,6 +19,7 @@ mkdir $DIGE/config
 
 cp dige/DIGE.sex $DIGE/config
 cp dige/DIGE.param $DIGE/config 
+cp dige/gauss_2.0_3x3.conv $DIGE/config 
 
 #run the image with a specified volume
 docker run -v $DIGE:/../work dige-sextractor
