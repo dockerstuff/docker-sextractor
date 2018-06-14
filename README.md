@@ -12,26 +12,22 @@ Here’s a guide to take you from TIFF files to protein changes:
 
 2. Github is a way to host and update files. Download docker-sextractor [from our github][7].
 
-3. Navigate to the Github folder you downloaded, and open it in Terminal.
-- [ ]  Hopefully we'll make this clickable and not require terminal
-
-Install:
-
-`bash build.sh`
+3. Navigate to the Github folder you downloaded, and double click on:
+`run.command`
 
 4. Optional: Install some useful DIGE and SExtractor macros:
 
-Copy `DIGE_SExtractor_tools.txt` to ImageJ/macros/toolsets
+Copy `DIGE_SExtractor_tools.txt` from ImageJ Macros to ImageJ/macros/toolsets
 
 ## 2. Prepare files
 - In ImageJ, save the Cy3 and Cy5 TIFF images as FITS files in the folders `input_fits_3` and `input_fits_5`
 - Make a merged sum: paste control → add, copy and paste one window on to the other. Save the result as a FITS file in the folder `fitsSum`
 - Make sure all files have the same name
 
-- Run `bash run.sh`
+- Click on `run.command`
 
 Afterwards you should find:
-- **Aper files** are masks that you can open in ImageJ to check that there's a reasonable size. Dotted lines mean less confidence.
+- **Aper files** are masks that you can open in ImageJ to see if the spots it identified are reasonable. Dotted lines mean less confidence in identifying that spot.
 
 - The **cat folder** is where you get raw intensity values. You can open in excel and make the columns index, x, y, raw intensity.
 
@@ -91,11 +87,11 @@ Background filter: \<size\> or \<width\>,\<height\>
 
 > How do you look at raw values in excel?
 
-SExtractor will output a .cat file
+<!-- SExtractor will output a .cat file
 rename your .cat file .csv.
 1. Open a new Excel document and select File / Import / CSV file.
 2. Save as CSV
->Can this be automated?
+>This should now be automated -->
 
 **You can visualize these coordinates in ImageJ/Fiji:**
 - Install the ImageJ macros as described in 1.4 above
@@ -106,7 +102,7 @@ You should get something that looks like “example of imported coordinates.png�
 
 If you want to only load some points, you might want to copy and paste only those coordinates into a new CSV file. Any columns that you delete in excel you also have to select and "clear contents" or there will be extra spaces and the macro will get confused.
 
-- Across at least 3 biological replicates, look at all the raw values. Find 5-6 spots that are evenly distributed through the gel and don't change more than 6% between Cy5 and Cy3
+- Across at least 3 biological replicates, look at all the raw values. Find 5-6 spots that are evenly distributed through the gel (the macro above helps) that don't change more than 6% between Cy5 and Cy3.
 
 - Take a ratio of Cy5 to Cy3 for each guide star, take an average, and multiply the raw values by that correction factor.
 
