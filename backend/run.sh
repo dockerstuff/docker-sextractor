@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir /tmp/dige-sex
+
 DIGE=/tmp/dige-sex
 
 LOCAL_INPUT=io
