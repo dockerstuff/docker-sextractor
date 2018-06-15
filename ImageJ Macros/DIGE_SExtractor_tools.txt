@@ -23,8 +23,10 @@ macro "Cy5 Action Tool - C000C111C222C333C444D83C444D6dC444D8cC444D9bC444D56C444
      }
 
   macro "Make Stack & Save Action Tool - CfffCeeeCdddCcccCbbbCaaaC999C888C777C666C555D00D01D02D03D04D05D06D07D08D10D18D20D28D30D38D40D48D50D54D55D56D57D58D59D5aD5bD5cD5dD5eD5fD60D64D68D6fD70D74D78D7fD80D84D88D8fD90D91D92D93D94D95D96D97D98D9fDa4DafDb4DbfDc4DcfDd4DdfDe4DefDf4Df5Df6Df7Df8Df9DfaDfbDfcDfdDfeDff" {
-     run("Images to Stack", "name=Stack title=[] use");
-     saveAs("Animated Gif... ");
+		run("Images to Stack", "name=Stack title=[] use");
+ 		run("Animation Options...", "speed=2 first=1 last=2");
+ 		setMinAndMax(0, 4000);
+ 		run("8-bit");
      }
 
 
