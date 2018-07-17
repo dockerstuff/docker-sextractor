@@ -19,21 +19,28 @@ Here’s a guide to take you from TIFF files to protein changes:
 
 Copy `DIGE_SExtractor_tools.txt` from ImageJ Macros to ImageJ/macros/toolsets
 
-## 2. Prepare files
+## 2. What's included
+- `run.command` : Clickable script that handles installation/running Source Extractor.
+- `io` : Folder that contains all three input folders (`input_fits_3`, `input_fits_5`, and `input_fits_sum`) and will be the location of output folders, with timestamps.
+- `config` : Folder that contains parameter files (`DIGE.param` and `DIGE.sex`), and `gauss_2.0_3x3.conv`, a convolution mask which might need to be edited in advanced cases.
+- `ImageJ Macros` : Folder that contains `DIGE_SExtractor_tools.txt`, which is a file containing several helpful ImageJ macros for vizualizing SExtractor outputs, as well as an example output image.
+- `backend` : Contains scripts that manage input/output files while using Source Extractor. You shouldn't ever need to edit or run these.
+
+## 3. Prepare files
 - In ImageJ, save the Cy3 and Cy5 TIFF images as FITS files in the folders `input_fits_3` and `input_fits_5`
-- Make a merged sum: paste control → add, copy and paste one window on to the other. Save the result as a FITS file in the folder `fitsSum`
+- Make a merged sum: paste control → add, copy and paste one window on to the other. Save the result as a FITS file in the folder `input_fits_sum`
 - Make sure all files have the same name
 
 - Click on `run.command`
 
 Afterwards you should find:
-- **Aper files** are masks that you can open in ImageJ to see if the spots it identified are reasonable. Dotted lines mean less confidence in identifying that spot.
+- **Aper files** are masks that you can open in ImageJ to see if the spots it identified are reasonable. Dotted lines mean less confidence in identifying that spot. These files are found in `output_image_3` and `output_image_5`
 
-- The **cat folder** is where you get raw intensity values. You can open in excel and make the columns index, x, y, raw intensity.
+- `output_numbers_3` and `output_numbers_5` hold **csv files** that contain the raw intensity values. You can open these in excel and make the columns index, x, y, raw intensity.
 
 If the y-coordinate is inverted, in ImageJ check analyze / set measurements / invert y coordinate
 
-## 3. Tune segmentation parameters
+## 4. Tune segmentation parameters
 
 > Coming soon to a readme near you!
 
@@ -83,7 +90,7 @@ Background filter: \<size\> or \<width\>,\<height\>
 
 > What's ASSOC?
 
-## 4. Decide on guidestars
+## 5. Decide on guidestars
 
 > How do you look at raw values in excel?
 
@@ -108,7 +115,7 @@ If you want to only load some points, you might want to copy and paste only thos
 
 Consider making the ratio less than 1 to prevent stack overflow. A good correction factor is within 30%.
 
-## 5. Quantify changes
+## 6. Quantify changes
 - In Excel, multiply one channel by the correction factor. Now all the guide stars should be about the same between channels.
 
 - Then calculate fold ratio changes, and set a reasonable threshold.

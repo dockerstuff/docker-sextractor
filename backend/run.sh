@@ -28,7 +28,7 @@ cp ${LOCAL_CONFIG}/DIGE.param $DIGE/config
 cp ${LOCAL_CONFIG}/gauss_2.0_3x3.conv $DIGE/config 
 
 #run the image with a specified volume
-docker run -v $DIGE:/../work dige-sextractor
+docker run -v $DIGE:/../work igriswold/dige-sextractor
 
 #make an output directory based on the date
 folderName=$(date "+output-%Y-%m-%d-%H-%M-%S")
