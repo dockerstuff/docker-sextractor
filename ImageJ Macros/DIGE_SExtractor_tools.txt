@@ -66,7 +66,7 @@ macro "Cy5 Action Tool - C000C111C222C333C444D83C444D6dC444D8cC444D9bC444D56C444
 	iLabel = 0; iX = 1; iY = 2;
 	// loading and parsing each line
 	for (i = 1; i < (text.length); i++){
-	   line = split(text[i],",");
+	   line = split(text[i]," ,");
 	   setOption("ExpandableArrays", true);
 	   xpoints[i-1] = parseInt(line[iX]);
 	//Inverts the Y coordinate by subtracting from the width
