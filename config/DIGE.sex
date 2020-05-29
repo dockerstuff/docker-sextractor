@@ -1,0 +1,91 @@
+
+# SExtractor configuration file being used for DIGE gels - derived from
+# the defaults.
+# K. Arun <karbak@cmu.edu>
+
+# This file is maintained using version control (RCS).
+# $Id: kar.sxt,v 1.1 2002/10/22 16:55:23 kar Exp kar $
+# $Date: 2002/10/22 16:55:23 $
+# $Revision: 1.1 $
+# $Author: kar $
+
+# (*) indicates parameters which can be omitted from this config file.
+
+
+#-------------------------------- Catalog ------------------------------------
+
+CATALOG_NAME	test.cat	# name of the output catalog
+CATALOG_TYPE	ASCII	# "NONE","ASCII_HEAD","ASCII","FITS_1.0"
+				# or "FITS_LDAC"
+
+PARAMETERS_NAME	DIGE.param  # name of the file containing catalog contents
+
+#------------------------------- Extraction ----------------------------------
+
+DETECT_TYPE	CCD		# "CCD" or "PHOTO" (*)
+FLAG_IMAGE	flag.fits	# filename for an input FLAG-image
+DETECT_MINAREA	10		# minimum number of pixels above threshold [5]
+DETECT_THRESH	1.7		# <sigmas> or <threshold>,<ZP> in mag.arcsec-2
+ANALYSIS_THRESH	1.7		# <sigmas> or <threshold>,<ZP> in mag.arcsec-2
+
+FILTER		Y		# apply filter for detection ("Y" or "N")?
+#FILTER_NAME	default.conv	# name of the file containing the filter
+FILTER_NAME gauss_2.0_3x3.conv
+
+DEBLEND_NTHRESH	64	# Number of deblending sub-thresholds [32]
+DEBLEND_MINCONT	0.00001	# Minimum contrast parameter for deblending [0.00001 or 0.000005]
+			# 0 picks up the faintest objects/ 1 turns deblending off
+
+CLEAN		Y		# Clean spurious detections? (Y or N)?
+CLEAN_PARAM	1.0		# Cleaning efficiency
+
+MASK_TYPE	CORRECT		# type of detection MASKing: can be one of
+				# "NONE", "BLANK" or "[CORRECT]"
+
+#------------------------------ Photometry -----------------------------------
+
+PHOT_APERTURES	5		# MAG_APER aperture diameter(s) in pixels
+PHOT_AUTOPARAMS 1.5,1.5 	# MAG_AUTO parameters: <Kron_fact[2.5]>,<min_radius[3.5]>
+
+SATUR_LEVEL	35000.0		# level (in ADUs) at which arises saturation
+
+MAG_ZEROPOINT	0.0		# magnitude zero-point
+MAG_GAMMA	4.0		# gamma of emulsion (for photographic scans)
+GAIN		0.0		# detector gain in e-/ADU.
+PIXEL_SCALE	1.0		# size of pixel in arcsec (0=use FITS WCS info).
+
+#------------------------- Star/Galaxy Separation ----------------------------
+
+SEEING_FWHM	1.2		# stellar FWHM in arcsec
+#SEEING_FWHM 25
+STARNNW_NAME	default.nnw	# Neural-Network_Weight table filename
+
+#------------------------------ Background -----------------------------------
+
+BACK_SIZE	16		# Background mesh: <size> or <width>,<height> [32]
+# Too small, and noise throws off the background estimation. Too big, and you miss the small-scale variation in background. 32-256 is normal for stars. I thought DIGE would have much less background variation so bigger is better, but 16 seems to be a good compromise -Ardon
+BACK_FILTERSIZE	3		# Background filter: <size> or <width>,<height> [3]
+# BACK_TYPE MANUAL # trying this out
+# BACK_VALUE 300 # trying this out
+BACKPHOTO_TYPE	LOCAL		# can be "GLOBAL" or "LOCAL" (*) [GLOBAL]
+BACKPHOTO_THICK	48		# thickness of the background LOCAL annulus (*) [24]
+
+#------------------------------ Check Image ----------------------------------
+
+CHECKIMAGE_TYPE	APERTURES		# can be one of "NONE", "BACKGROUND",
+				# "MINIBACKGROUND", "-BACKGROUND", "OBJECTS",
+				# "-OBJECTS", "SEGMENTATION", "APERTURES",
+				# or "FILTERED" (*)
+CHECKIMAGE_NAME	1test.fits	# Filename for the check-image (*)
+
+#--------------------- Memory (change with caution!) -------------------------
+
+MEMORY_OBJSTACK	4000		# number of objects in stack
+MEMORY_PIXSTACK	1000000		# number of pixels in stack
+MEMORY_BUFSIZE	2048		# number of lines in buffer
+
+#----------------------------- Miscellaneous ---------------------------------
+
+VERBOSE_TYPE	NORMAL 		# can be "QUIET", "NORMAL" or "FULL" (*)
+
+#------------------------------- New Stuff -----------------------------------
